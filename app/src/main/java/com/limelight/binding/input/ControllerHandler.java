@@ -1681,6 +1681,21 @@ public class ControllerHandler implements InputManager.InputDeviceListener, UsbD
             }
         }
 
+        //fix joycon-left 十字键
+        if(context.vendorId == 0x057e && context.productId == 0x2006){
+            switch (event.getScanCode())
+            {
+                case 546://十字键
+                    return KeyEvent.KEYCODE_DPAD_LEFT;
+                case 547:
+                    return KeyEvent.KEYCODE_DPAD_RIGHT;
+                case 544:
+                    return KeyEvent.KEYCODE_DPAD_UP;
+                case 545:
+                    return KeyEvent.KEYCODE_DPAD_DOWN;
+            }
+        }
+
         if (context.usesLinuxGamepadStandardFaceButtons) {
             // Android's Generic.kl swaps BTN_NORTH and BTN_WEST
             switch (event.getScanCode()) {
