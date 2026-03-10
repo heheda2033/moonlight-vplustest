@@ -1682,7 +1682,7 @@ public class ControllerHandler implements InputManager.InputDeviceListener, UsbD
         }
 
         //fix joycon-left 十字键
-        if(context.vendorId == 0x057e && context.productId == 0x2006){
+        if(prefConfig.enableJoyConFix && context.vendorId == 0x057e && context.productId == 0x2006){
             switch (event.getScanCode())
             {
                 case 546://十字键

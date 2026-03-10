@@ -365,6 +365,7 @@ public class PreferenceConfiguration {
     public boolean gamepadMotionSensors;
     public boolean gamepadTouchpadAsMouse;
     public boolean gamepadMotionSensorsFallbackToDevice;
+    public boolean enableJoyConFix;
     public boolean reverseResolution;
     public boolean rotableScreen;
     // Runtime-only: enable mapping gyroscope motion to right analog stick
@@ -913,6 +914,7 @@ public class PreferenceConfiguration {
         config.gamepadTouchpadAsMouse = prefs.getBoolean(GAMEPAD_TOUCHPAD_AS_MOUSE_PREF_STRING, DEFAULT_GAMEPAD_TOUCHPAD_AS_MOUSE);
         config.gamepadMotionSensors = prefs.getBoolean(GAMEPAD_MOTION_SENSORS_PREF_STRING, DEFAULT_GAMEPAD_MOTION_SENSORS);
         config.gamepadMotionSensorsFallbackToDevice = prefs.getBoolean(GAMEPAD_MOTION_FALLBACK_PREF_STRING, DEFAULT_GAMEPAD_MOTION_FALLBACK);
+        config.enableJoyConFix = prefs.getBoolean("checkbox_enable_joyconfix", true);
         config.enableSimplifyPerfOverlay = false;
         
         // 加载陀螺仪偏好设置
