@@ -631,7 +631,7 @@
         <CheckBoxPreference
             android:key="checkbox_enable_joyconfix"
             android:title="兼容Switch JoyCon手柄十字键"
-            android:summary="部分小米设备出现此问题，开启此选项可修复（需要重启应用）"
+            android:summary="修复 Joy-Con Left 十字键映射问题，\n部分小米设备出现此问题，开启此选项可修复\n（需要重启应用）"
             android:defaultValue="true" />
         <ListPreference
             android:key="video_format"
