@@ -142,6 +142,11 @@
             android:title="@string/title_checkbox_gamepad_motion_fallback"
             android:summary="@string/summary_checkbox_gamepad_motion_fallback"
             android:defaultValue="false" />
+        <CheckBoxPreference
+            android:key="checkbox_enable_joyconfix"
+            android:title="@string/title_checkbox_enable_joycon_fix"
+            android:summary="@string/summary_checkbox_enable_joycon_fix"
+            android:defaultValue="true" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/category_input_settings"
         android:key="category_input_settings">
@@ -371,11 +376,7 @@
             android:summary="搭配自定义分辨率使用，确保你使用的串流端支持并且PC端分辨率是竖直方向"
             android:defaultValue="false"/>
 
-        <CheckBoxPreference
-            android:key="checkbox_enable_joyconfix"
-            android:title="兼容Switch JoyCon手柄"
-            android:summary="如果你的JoyCon无法使用或识别按键有问题，可以尝试开启此功能。适配Android 10及以上"
-            android:defaultValue="false"/>
+
 
         <com.limelight.preferences.SeekBarPreference
             android:key="seekbar_keyboard_axi_opacity"

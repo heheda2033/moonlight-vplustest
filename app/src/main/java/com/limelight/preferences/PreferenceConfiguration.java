@@ -85,6 +85,10 @@ public class PreferenceConfiguration {
     //自动摇杆
     private static final String CHECKBOX_CHECKBOX_ENABLE_ANALOG_STICK_NEW="checkbox_enable_analog_stick_new";
 
+    //Joy-Con 手柄修复
+    private static final String CHECKBOX_ENABLE_JOYCON_FIX = "checkbox_enable_joyconfix";
+    private static final boolean DEFAULT_ENABLE_JOYCON_FIX = true;
+
     //触控屏幕灵敏度
     private static final String TOUCH_SENSITIVITY="seekbar_touch_sensitivity_opacity_x";
 
@@ -693,8 +697,8 @@ public class PreferenceConfiguration {
         config.enableKeyboard = prefs.getBoolean(CHECKBOX_ENABLE_KEYBOARD,false);
 
         config.enableKeyboardVibrate=prefs.getBoolean(CHECKBOX_ENABLE_KEYBOARD_VIBRATE,false);
-        //兼容joycon手柄
-        config.enableJoyConFix=prefs.getBoolean("checkbox_enable_joyconfix",false);
+        // 兼容 Joy-Con 手柄
+        config.enableJoyConFix = prefs.getBoolean(CHECKBOX_ENABLE_JOYCON_FIX, DEFAULT_ENABLE_JOYCON_FIX);
         //全键盘透明度
         config.oscKeyboardOpacity=prefs.getInt("seekbar_keyboard_axi_opacity",DEFAULT_OPACITY);
 

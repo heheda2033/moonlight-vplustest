@@ -107,6 +107,33 @@ public class ControllerHandler implements InputManager.InputDeviceListener, UsbD
             // FIXME: Paddles?
     );
 
+    // Joy-Con Left D-Pad scan codes from Linux hid-nintendo driver (drivers/hid/hid-nintendo.c)
+    private static final int JOYCON_LEFT_DPAD_UP_SCANCODE = 544;
+    private static final int JOYCON_LEFT_DPAD_DOWN_SCANCODE = 545;
+    private static final int JOYCON_LEFT_DPAD_LEFT_SCANCODE = 546;
+    private static final int JOYCON_LEFT_DPAD_RIGHT_SCANCODE = 547;
+    private static final int JOYCON_LEFT_CAPTURE_SCANCODE = 309;
+    private static final int JOYCON_LEFT_L1_SCANCODE = 310;
+    private static final int JOYCON_LEFT_L2_SCANCODE = 312;
+    private static final int JOYCON_LEFT_MINUS_SCANCODE = 314;
+    private static final int JOYCON_LEFT_THUMBL_SCANCODE = 317;
+
+    // Joy-Con Right button scan codes
+    private static final int JOYCON_RIGHT_Y_SCANCODE = 307;
+    private static final int JOYCON_RIGHT_X_SCANCODE = 308;
+    private static final int JOYCON_RIGHT_A_SCANCODE = 304;
+    private static final int JOYCON_RIGHT_B_SCANCODE = 305;
+    private static final int JOYCON_RIGHT_R1_SCANCODE = 311;
+    private static final int JOYCON_RIGHT_R2_SCANCODE = 313;
+    private static final int JOYCON_RIGHT_PLUS_SCANCODE = 315;
+    private static final int JOYCON_RIGHT_HOME_SCANCODE = 316;
+    private static final int JOYCON_RIGHT_THUMBR_SCANCODE = 318;
+
+    // Nintendo vendor ID and Joy-Con product IDs
+    private static final int NINTENDO_VENDOR_ID = 0x057e;
+    private static final int JOYCON_LEFT_PRODUCT_ID = 0x2006;
+    private static final int JOYCON_RIGHT_PRODUCT_ID = 0x2007;
+
     private final Vector2d inputVector = new Vector2d();
 
     private final SparseArray<InputDeviceContext> inputDeviceContexts = new SparseArray<>();
@@ -1385,51 +1412,50 @@ public class ControllerHandler implements InputManager.InputDeviceListener, UsbD
         }
 
 
-        //fix joycon-left 十字键
-        if(prefConfig.enableJoyConFix&&context.vendorId == 0x057e && context.productId == 0x2006){
-            switch (event.getScanCode())
-            {
-                case 546://十字键
+        // Fix Joy-Con Left D-Pad and button mapping
+        if (prefConfig.enableJoyConFix && context.vendorId == NINTENDO_VENDOR_ID && context.productId == JOYCON_LEFT_PRODUCT_ID) {
+            switch (event.getScanCode()) {
+                case JOYCON_LEFT_DPAD_LEFT_SCANCODE:
                     return KeyEvent.KEYCODE_DPAD_LEFT;
-                case 547:
+                case JOYCON_LEFT_DPAD_RIGHT_SCANCODE:
                     return KeyEvent.KEYCODE_DPAD_RIGHT;
-                case 544:
+                case JOYCON_LEFT_DPAD_UP_SCANCODE:
                     return KeyEvent.KEYCODE_DPAD_UP;
-                case 545:
+                case JOYCON_LEFT_DPAD_DOWN_SCANCODE:
                     return KeyEvent.KEYCODE_DPAD_DOWN;
-                case 309://截图键
+                case JOYCON_LEFT_CAPTURE_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_MODE;
-                case 310:
+                case JOYCON_LEFT_L1_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_L1;
-                case 312:
+                case JOYCON_LEFT_L2_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_L2;
-                case 314:
+                case JOYCON_LEFT_MINUS_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_SELECT;
-                case 317:
+                case JOYCON_LEFT_THUMBL_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_THUMBL;
             }
         }
-        //fix JoyCon-right xy互换
-        if(prefConfig.enableJoyConFix&&context.vendorId == 0x057e && context.productId == 0x2007){
-            switch (event.getScanCode())
-            {
-                case 307://XY相反
+
+        // Fix Joy-Con Right button mapping (X/Y swap)
+        if (prefConfig.enableJoyConFix && context.vendorId == NINTENDO_VENDOR_ID && context.productId == JOYCON_RIGHT_PRODUCT_ID) {
+            switch (event.getScanCode()) {
+                case JOYCON_RIGHT_Y_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_Y;
-                case 308:
+                case JOYCON_RIGHT_X_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_X;
-                case 304:
+                case JOYCON_RIGHT_A_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_A;
-                case 305:
+                case JOYCON_RIGHT_B_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_B;
-                case 311:
+                case JOYCON_RIGHT_R1_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_R1;
-                case 313:
+                case JOYCON_RIGHT_R2_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_R2;
-                case 315:
+                case JOYCON_RIGHT_PLUS_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_START;
-                case 316:
+                case JOYCON_RIGHT_HOME_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_MODE;
-                case 318:
+                case JOYCON_RIGHT_THUMBR_SCANCODE:
                     return KeyEvent.KEYCODE_BUTTON_THUMBR;
             }
         }
