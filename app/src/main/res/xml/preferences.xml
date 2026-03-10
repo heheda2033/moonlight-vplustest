@@ -295,11 +295,6 @@
             android:title="@string/title_checkbox_gamepad_motion_fallback"
             android:summary="@string/summary_checkbox_gamepad_motion_fallback"
             android:defaultValue="false" />
-        <CheckBoxPreference
-            android:key="checkbox_enable_joyconfix"
-            android:title="兼容Switch JoyCon手柄"
-            android:summary="修复JoyCon左手柄十字键问题，开启后十字键可正常使用"
-            android:defaultValue="true" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/category_input_settings"
         android:key="category_input_settings"
@@ -633,6 +628,11 @@
             android:title="@string/title_checkbox_disable_warnings"
             android:summary="@string/summary_checkbox_disable_warnings"
             android:defaultValue="false" />
+        <CheckBoxPreference
+            android:key="checkbox_enable_joyconfix"
+            android:title="兼容Switch JoyCon手柄十字键"
+            android:summary="部分小米设备出现此问题，开启此选项可修复（需要重启应用）"
+            android:defaultValue="true" />
         <ListPreference
             android:key="video_format"
             android:title="@string/title_video_format"
