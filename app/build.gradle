@@ -61,7 +61,7 @@ android {
                 }
             }
 
-            applicationId "com.limelight"
+            applicationId "com.limelight.vplus"
             dimension "root"
             buildConfigField "boolean", "ROOT_BUILD", "false"
         }
